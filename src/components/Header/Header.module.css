@@ -1,0 +1,216 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  padding: 24px var(--page-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
+  color: #141414;
+}
+
+:global(body.soldador-home-intro) .header {
+  animation: headerIntro 700ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both;
+}
+
+@keyframes headerIntro {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(body.soldador-home-intro) .header {
+    animation: none;
+  }
+}
+
+.menuButton {
+  display: none;
+}
+
+.logoLink {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.logo {
+  display: block;
+  width: 95px;
+  height: 24px;
+}
+
+.nav {
+  flex: 1 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 96px;
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--fw-regular);
+}
+
+.link,
+.cartLink {
+  color: inherit;
+  font-size: var(--fs-16);
+  line-height: var(--lh-24);
+  font-weight: var(--fw-regular);
+}
+
+.cartLink {
+  flex: 0 0 auto;
+}
+
+.overlay,
+.drawer {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 24px;
+    justify-content: space-between;
+    font-size: var(--fs-16);
+    line-height: var(--lh-24);
+    color: #141414;
+  }
+
+  .menuButton {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .menuButton img,
+  .closeButton img {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .logoLink {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .cartLink {
+    font-size: var(--fs-16);
+    line-height: var(--lh-24);
+    font-weight: var(--fw-regular);
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: block;
+    pointer-events: none;
+    background: rgba(20, 20, 20, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .overlayOpen {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 281px;
+    height: 100dvh;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .drawerOpen {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .closeButton {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .drawerLogo {
+    width: max-content;
+    margin-top: 48px;
+    display: inline-flex;
+  }
+
+  .drawerLogo img {
+    display: block;
+    width: 95px;
+    height: 24px;
+  }
+
+  .drawerNav {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: #141414;
+    font-size: var(--fs-16);
+    line-height: var(--lh-24);
+    font-weight: var(--fw-regular);
+  }
+
+  .drawerNav a:last-child {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 32px 16px;
+  }
+
+  .logoLink {
+    left: 72px;
+    transform: none;
+  }
+
+  .drawer {
+    width: 281px;
+    height: 100dvh;
+    padding: 32px 16px 24px;
+  }
+}
